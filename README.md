@@ -62,4 +62,6 @@ def play():
 ```
 The `play` function simulates one game of the rock, paper and scissors game. It brings together all the previous functions to simulate a game. It get a `computer_choice` using the `get_computer_choice` function. Then, it gets the `user_choice` with the `get_user_choice` function. Finally, it decides on the winner using the `get_winner` function and returns it.
 
-Overall, the milestone was focused on implementing a game of rock, paper and scissors with a player and the computer. A game of rock, paper and scissors can be played with the computer by running the `manual_rps.py` file with the command `python manual_rps.py`.
+#### Running the game
+Overall, the milestone was focused on implementing a game of rock, paper and scissors with a player and the computer. A game of rock, paper and scissors can be played with the computer by running the `manual_rps.py` file with the command:
+ `python manual_rps.py`
