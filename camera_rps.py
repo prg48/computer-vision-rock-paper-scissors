@@ -69,9 +69,13 @@ def get_winner(computer_choice, user_choice):
     elif computer_choice == "scissors" and user_choice.lower() == "nothing":
         print(tie)
 
-if __name__ == "__main__":
+def play():
+    """
+    This function simulates the game of rock, paper and scissors. Finally, it prints the winner.
+    """
     # load the model
     model = load_model("keras_model.h5")
+
     # start the webcam
     cap = cv2.VideoCapture(0)
 
@@ -88,9 +92,11 @@ if __name__ == "__main__":
         normalized_image = (image_np.astype(np.float32) / 127.0) - 1 
         data[0] = normalized_image
 
-        # get prediction
+        # get user choice as prediction from model
         prediction = get_prediction(data, model)
-        print(prediction)
+        # get computer choice
+        computer_choice = get_computer_choice()
+        print(get_winner(computer_choice, prediction))
 
         # if key q is pressed quit
         if cv2.waitKey(1) & 0xFF == ord('q'):
@@ -98,3 +104,6 @@ if __name__ == "__main__":
 
     cap.release()
     cv2.destroyAllWindows()
+
+if __name__ == "__main__":
+    play()
