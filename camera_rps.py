@@ -27,6 +27,7 @@ def get_prediction(image, model):
         return "scissors"
 
 if __name__ == "__main__":
+    # load the model
     model = load_model("keras_model.h5")
     # start the webcam
     cap = cv2.VideoCapture(0)
