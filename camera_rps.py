@@ -38,18 +38,16 @@ if __name__ == "__main__":
         # show the frame in a window
         cv2.imshow('frame', frame)
 
-        # if key p is pressed
-        if cv2.waitKey(1) & 0xFF == ord('p'):
-            # prepare the image
-            data = np.ndarray(shape=(1,224,224,3), dtype=np.float32)
-            resized_frame = cv2.resize(frame, (224,224), interpolation=cv2.INTER_AREA)
-            image_np = np.array(resized_frame)
-            normalized_image = (image_np.astype(np.float32) / 127.0) - 1 
-            data[0] = normalized_image
+        # prepare the image
+        data = np.ndarray(shape=(1,224,224,3), dtype=np.float32)
+        resized_frame = cv2.resize(frame, (224,224), interpolation=cv2.INTER_AREA)
+        image_np = np.array(resized_frame)
+        normalized_image = (image_np.astype(np.float32) / 127.0) - 1 
+        data[0] = normalized_image
 
-            # get prediction
-            prediction = get_prediction(data, model)
-            print(prediction)
+        # get prediction
+        prediction = get_prediction(data, model)
+        print(prediction)
 
         # if key q is pressed quit
         if cv2.waitKey(1) & 0xFF == ord('q'):
