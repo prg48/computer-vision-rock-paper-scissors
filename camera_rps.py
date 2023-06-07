@@ -2,6 +2,7 @@ import cv2
 from keras.models import load_model
 import numpy as np
 import random
+import time
 
 def get_prediction(image, model):
     """
@@ -79,24 +80,46 @@ def play():
     # start the webcam
     cap = cv2.VideoCapture(0)
 
+    # set start time
+    start_time = time.time()
+
     while True:
         # read the frame
         ret, frame = cap.read()
         # show the frame in a window
         cv2.imshow('frame', frame)
 
-        # prepare the image
-        data = np.ndarray(shape=(1,224,224,3), dtype=np.float32)
-        resized_frame = cv2.resize(frame, (224,224), interpolation=cv2.INTER_AREA)
-        image_np = np.array(resized_frame)
-        normalized_image = (image_np.astype(np.float32) / 127.0) - 1 
-        data[0] = normalized_image
+        # set the end time
+        end_time = time.time()
+        # calculate how many seconds have passed
+        elapsed_time = end_time - start_time
 
-        # get user choice as prediction from model
-        prediction = get_prediction(data, model)
-        # get computer choice
-        computer_choice = get_computer_choice()
-        print(get_winner(computer_choice, prediction))
+        # if 3 seconds have passed 
+        if elapsed_time > 3:
+            # reset the start time
+            start_time = end_time
+
+            # prepare the image
+            data = np.ndarray(shape=(1,224,224,3), dtype=np.float32)
+            resized_frame = cv2.resize(frame, (224,224), interpolation=cv2.INTER_AREA)
+            image_np = np.array(resized_frame)
+            normalized_image = (image_np.astype(np.float32) / 127.0) - 1 
+            data[0] = normalized_image
+
+            # get user choice as prediction from model
+            prediction = get_prediction(data, model)
+            print(f"you chose {prediction}.")
+
+            # get computer choice
+            computer_choice = get_computer_choice()
+            print(f"computer chose {computer_choice}.")
+
+            # prints the winner
+            get_winner(computer_choice, prediction)
+            print('\n')
+
+            # sleep for a second to check the result
+            time.sleep(1)
 
         # if key q is pressed quit
         if cv2.waitKey(1) & 0xFF == ord('q'):
