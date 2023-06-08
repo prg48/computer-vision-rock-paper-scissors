@@ -27,7 +27,7 @@ After cloning the project, it is better to setup an environment with either `con
 
 To setup an environment with conda, you can enter the following commmand:
 ```bash
-conda create name my_env python
+conda create --name my_env python
 ```
 Please replace `my_env` with the your preferred environment name. 
 To activate the environment, use the command:
@@ -50,6 +50,15 @@ pip install -r requirements.txt
 ```
 
 ## Running the game
+There are 2 versions of the game; `text version` and `computer vision version`, developed for milestone 4 and milestone 5 respectively. To run the text version of the game, run the following command:
+```bash
+python manual_rps.py
+```
+
+To run the computer vision version of the game, run the following command:
+```bash
+python camera_rps.py
+```
 
 ## Milestone 2
 For milestone 2 of the project, an image recognition model was trained in [teacheable machine app](https://teachablemachine.withgoogle.com/) which allows users to train an image recognition model on the browser. Four classes were labeled namely rock, paper, scissors and nothing. The image samples for all classes were uniform, i.e. 46 images so that there is balance of sample images for each class. The hyperparameters for the training of the model were as follows:
