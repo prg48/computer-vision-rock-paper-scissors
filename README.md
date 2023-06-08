@@ -12,24 +12,42 @@ This project is a rock, paper and scissors game using computer vision. The playe
 
 ## Getting started
 ### Cloning the project
-The project can be cloned with the following command:<br>
-```git clone https://github.com/prg48/computer-vision-rock-paper-scissors.git```<br>
-Navigate to the cloned project directory:<br>
-```cd computer-vision-rock-paper-scissors```
+The project can be cloned with the following command:
+```bash
+git clone https://github.com/prg48/computer-vision-rock-paper-scissors.git
+```
+
+Navigate to the cloned project directory:
+```bash
+cd computer-vision-rock-paper-scissors
+```
 
 ### Environment setup
-After cloning the project, it is better to setup an environment with either `conda` or `virtualenv` to run the project. For installation of conda, you can follow the [official conda installation guide](https://docs.conda.io/projects/conda/en/latest/user-guide/install/index.html). For installation of virtualenv, you can follow the [virtualenv installation guide](https://virtualenv.pypa.io/en/latest/installation.html). <br>
-To setup an environment with conda, you can enter the following commmand: <br>
-```conda create name my_env python```<br>
-Please replace `my_env` with the your preferred environment name. The activate the environment with the command: <br>
-```conda activate my_env```<br>
-Please replace `my_env` with the environment name you named while creating the environment. If you are using virtualenv to create an environment, you can follow the instruction [here](https://docs.python.org/3/library/venv.html).<br>
-Also install pip after activating the environment to install requirements:<br>
-```conda install pip```
+After cloning the project, it is better to setup an environment with either `conda` or `virtualenv` to run the project. For installation of conda, you can follow the [official conda installation guide](https://docs.conda.io/projects/conda/en/latest/user-guide/install/index.html). For installation of virtualenv, you can follow the [virtualenv installation guide](https://virtualenv.pypa.io/en/latest/installation.html).
+
+To setup an environment with conda, you can enter the following commmand:
+```bash
+conda create name my_env python
+```
+Please replace `my_env` with the your preferred environment name. 
+To activate the environment, use the command:
+```bash
+conda activate my_env
+```
+Please replace `my_env` with the environment name you named while creating the environment.
+
+If you are using virtualenv to create an environment, you can follow the instruction [here](https://docs.python.org/3/library/venv.html).
+
+Also install pip after activating the environment to install requirements:
+```bash
+conda install pip
+```
 
 ### Requirements
-The requirements for the project can be found in `requirements.txt`. Run the following command to install requirements:<br>
-```pip install -r requirements.txt```
+The requirements for the project can be found in `requirements.txt`. Run the following command to install requirements:
+```bash
+pip install -r requirements.txt
+```
 
 ## Running the game
 
