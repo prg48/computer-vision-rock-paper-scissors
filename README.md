@@ -4,18 +4,34 @@
 This project is a rock, paper and scissors game using computer vision. The player of the project can use the webcam of their device to signal either rock, paper or scissors and play the game with the computer. The project is separated in milestones; wherein in each milestone, some basic funcionality or task is achieved. There are 3 milestones for this project. Namely, [Milestone 2](#milestone-2), [Milestone 4](#milestone-4) and [Milestone 5](#milestone-5). Finally, two versions of the game is developed, `text version` and `computer vision version`. The text version of the game is implemented in `manual_rps.py` and the computer vision version is implemented in `camera_rps.py`.
 
 ## Table of Contents
-1. [Environment Setup](#environment-setup)
-2. [Running text version](#running-text-version)
-3. [Running computer vision version](#running-computer-vision-version)
+1. [Getting started](#getting-started)
+2. [Running the game](#running-the-game)
 4. [Milestone 2](#milestone-2)
 5. [Milestone 4](#milestone-4)
 6. [Milestone 5](#milestone-5)
 
-## Environment Setup
+## Getting started
+### Cloning the project
+The project can be cloned with the following command:<br>
+`git clone https://github.com/prg48/computer-vision-rock-paper-scissors.git`<br>
+Navigate to the cloned project directory:<br>
+`cd computer-vision-rock-paper-scissors`
 
-## Running text version
+### Environment setup
+After cloning the project, it is better to setup an environment with either `conda` or `virtualenv` to run the project. For installation of conda, you can follow the [official conda installation guide](https://docs.conda.io/projects/conda/en/latest/user-guide/install/index.html). For installation of virtualenv, you can follow the [virtualenv installation guide](https://virtualenv.pypa.io/en/latest/installation.html). <br>
+To setup an environment with conda, you can enter the following commmand: <br>
+`conda create name my_env python`<br>
+Please replace `my_env` with the your preferred environment name. The activate the environment with the command: <br>
+`conda activate my_env`<br>
+Please replace `my_env` with the environment name you named while creating the environment. If you are using virtualenv to create an environment, you can follow the instruction [here](https://docs.python.org/3/library/venv.html).<br>
+Also install pip after activating the environment to install requirements:<br>
+`conda install pip`
 
-## Running computer vision version
+### Requirements
+The requirements for the project can be found in `requirements.txt`. Run the following command to install requirements:<br>
+`pip install -r requirements.txt`
+
+## Running the game
 
 ## Milestone 2
 For milestone 2 of the project, an image recognition model was trained in [teacheable machine app](https://teachablemachine.withgoogle.com/) which allows users to train an image recognition model on the browser. Four classes were labeled namely rock, paper, scissors and nothing. The image samples for all classes were uniform, i.e. 46 images so that there is balance of sample images for each class. The hyperparameters for the training of the model were as follows:
