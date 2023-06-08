@@ -3,6 +3,20 @@
 ## Description
 This project is a rock, paper and scissors game using computer vision. The player of the project can use the webcam of their device to signal either rock, paper or scissors and play the game with the computer. The project is separated in milestones; wherein in each milestone, some basic funcionality or task is achieved. There are 3 milestones for this project. Namely, [Milestone 2](#milestone-2), [Milestone 4](#milestone-4) and [Milestone 5](#milestone-5). Finally, two versions of the game is developed, `text version` and `computer vision version`. The text version of the game is implemented in `manual_rps.py` and the computer vision version is implemented in `camera_rps.py`.
 
+## Table of Contents
+1. [Environment Setup](#environment-setup)
+2. [Running text version](#running-text-version)
+3. [Running computer vision version](#running-computer-vision-version)
+4. [Milestone 2](#milestone-2)
+5. [Milestone 4](#milestone-4)
+6. [Milestone 5](#milestone-5)
+
+## Environment Setup
+
+## Running text version
+
+## Running computer vision version
+
 ## Milestone 2
 For milestone 2 of the project, an image recognition model was trained in [teacheable machine app](https://teachablemachine.withgoogle.com/) which allows users to train an image recognition model on the browser. Four classes were labeled namely rock, paper, scissors and nothing. The image samples for all classes were uniform, i.e. 46 images so that there is balance of sample images for each class. The hyperparameters for the training of the model were as follows:
 * epoch: 80
@@ -66,9 +80,5 @@ def play():
     return get_winner(computer_choice, user_choice)
 ```
 The `play` function simulates one game of the rock, paper and scissors game. It brings together all the previous functions to simulate a game. It get a `computer_choice` using the `get_computer_choice` function. Then, it gets the `user_choice` with the `get_user_choice` function. Finally, it decides on the winner using the `get_winner` function and returns it.
-
-### Running the game
-Overall, the milestone was focused on implementing a game of rock, paper and scissors with a player and the computer. A game of rock, paper and scissors can be played with the computer by running the `manual_rps.py` file with the command:
- `python manual_rps.py`
 
 ## Milestone 5
