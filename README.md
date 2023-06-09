@@ -87,7 +87,7 @@ python camera_rps.py
 The computer vision version uses the webcam. The player can signal either rock, paper or scissors with their hand and the computer will classify it. When either the computer or the player wins the game for three rounds, the game ends. The game can also be exited by pressing `q`.
 
 <div align="center">
-    <img stc="./images/computer-vision-version.png" alt="computer vision version of the game">
+    <img src="./images/computer-vision-version.png" alt="computer vision version of the game">
     <p>Game play</p>
 </div>
 
