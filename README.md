@@ -50,11 +50,19 @@ pip install -r requirements.txt
 ```
 
 ## Running the game
+### Running text version
 There are 2 versions of the game; `text version` and `computer vision version`, developed for milestone 4 and milestone 5 respectively. To run the text version of the game, run the following command:
 ```bash
 python manual_rps.py
 ```
 
+The game starts in the terminal. The player can press either `Ctrl + c` or `q` to exit the game. The game can be played by entering either `rock, paper or scissors`.
+
+![game start]('./images/text-version-welcome.pnd')
+![in game]('./images/text-version-game.png)
+![game exit]('./images/text-version-exit.png')
+
+### Running computer vision version
 To run the computer vision version of the game, run the following command:
 ```bash
 python camera_rps.py
