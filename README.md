@@ -13,7 +13,16 @@ This project is a rock, paper and scissors game using computer vision. The playe
     - [Running computer vision version](#running-computer-vision-version)
 4. [Milestone 2](#milestone-2)
 5. [Milestone 4](#milestone-4)
+    - [Function 1](#function-1)
+    - [Function 2](#function-2)
+    - [Function 3](#function-3)
+    - [Function 4](#function-4)
 6. [Milestone 5](#milestone-5)
+    - [Function 1](#function-1)
+    - [Function 2](#function-2)
+    - [Function 3](#function-3)
+    - [Function 4](#function-4)
+    - [Function 5](#function-5)
 
 ## Getting started
 ### Cloning the project
@@ -92,8 +101,12 @@ The computer vision version uses the webcam. The player can signal either rock, 
 </div>
 
 ## Milestone 2
-For milestone 2 of the project, an image recognition model was trained in [teacheable machine app](https://teachablemachine.withgoogle.com/) which allows users to train an image recognition model on the browser. Four classes were labeled namely rock, paper, scissors and nothing. The image samples for all classes were uniform, i.e. 46 images so that there is balance of sample images for each class. The hyperparameters for the training of the model were as follows:
-* epoch: 80
+For milestone 2 of the project, an image recognition model was trained in [teacheable machine app](https://teachablemachine.withgoogle.com/) which allows users to train an image recognition model on the browser. Four classes were labeled namely rock, paper, scissors and nothing. The image samples for all classes were fairly uniform. The sample sizes for each class and hyperparameters for the training of the model were as follows:
+* sample_nothing: 124
+* sample_rock: 136
+* sample_paper: 152
+* sample_scissors: 170
+* epoch: 150
 * batch size: 16
 * learning rate: 0.001
 
@@ -114,10 +127,14 @@ The `get_computer_choice` function simulates a choice from the computer. It choo
 ### Function 2
 ```python
 def get_user_choice():
-    choice = input("Please pick between rock, paper and scissors: ")
-    return choice
+    valid_choices = ["rock", "paper", "scissors", "q"]
+    choice = input("Please pick between rock, paper or scissors: ")
+    if choice.lower() in valid_choices:
+        return choice.lower()
+    else:
+        raise ValueError("Please enter a valid input.")
 ```
-The `get_user_choice` function simulates a choice from the user. It asks the user to input a choice from choices, `rock, paper or scissors` and return it. Furthermore, user validation can be added to this function. However, it has not been added for this milestone.
+The `get_user_choice` function simulates a choice from the user. It asks the user to input a choice from choices, `rock, paper , scissors or q` and return it. Furthermore, the function validates the user's choice and raises `ValueError` if the choice is not valid.
 
 ### Function 3
 ```python
@@ -149,10 +166,193 @@ The `get_winner` function abstracts the logic for the winner and prints the stat
 ### Function 4
 ```python
 def play():
-    computer_choice = get_computer_choice()
-    user_choice = get_user_choice()
-    return get_winner(computer_choice, user_choice)
+    game_finish_str = "Thank you for playing rock, paper and scissors game.\nPlease visit again."
+
+    print("Welcome to rock, paper and scissors game........................")
+    print("To quit, press 'Ctrl + c'")
+    print("OR")
+    print("Enter 'q' and press return when asked to choose between rock, paper or scissors.......\n")
+    while True:
+        computer_choice = get_computer_choice()
+
+        try:
+            user_choice = get_user_choice()
+
+            ## if user has entered 'q', quit the game
+            if user_choice == 'q':
+                print(game_finish_str)
+                break
+            print(f"You chose {user_choice}")
+            print(f"Computer chose {computer_choice}")
+            get_winner(computer_choice, user_choice)
+            print()
+
+        except ValueError:
+            print("Please enter a valid input.\n")
+
+        except KeyboardInterrupt:
+            print("\n" + game_finish_str)
+            break
 ```
-The `play` function simulates one game of the rock, paper and scissors game. It brings together all the previous functions to simulate a game. It get a `computer_choice` using the `get_computer_choice` function. Then, it gets the `user_choice` with the `get_user_choice` function. Finally, it decides on the winner using the `get_winner` function and returns it.
+The `play` function runs the game unless the player either presses `q` or enters `Ctrl + c`. It also deals with `ValueError` which is raised by the `user_choice` function and the `KeyboardInterrupt` error raised when the player presses `Ctrl + c`.
 
 ## Milestone 5
+For Milesone 5, computer vision version of the game is developed. The code for this version imports the following library:
+* cv2
+* load_model from keras.model
+* numpy
+* time
+* random
+
+The code for the milestone is divided into five functions. 
+### Function 1
+```python
+def get_prediction(image, model):
+    prediction = model.predict(image)
+
+    # get index of the highest probability
+    max_idx = np.argmax(prediction[0])
+
+    if max_idx == 0:
+        return "nothing"
+    elif max_idx == 1:
+        return "rock"
+    elif max_idx == 2:
+        return "paper"
+    elif max_idx == 3:
+        return "scissors"
+```
+The `get_prediction` function predicts the class of the image into either `rock, paper, scissors or nothing` using the model provided.
+
+### Function 2
+```python
+def get_computer_choice():
+    choices = ["rock", "paper", "scissors"]
+    return random.choice(choices)
+```
+The `get_computer_choice` function simulates a choice from the computer. It chooses a random choice from a list of choices, `rock, paper or scissors` and returns it.
+
+### Function 3
+```python
+def get_winner(computer_choice, user_choice):
+    computer_wins = "You lost"
+    player_wins = "You won!"
+    tie = "It is a tie!"
+    if computer_choice == "rock" and user_choice.lower() == "rock":
+        return tie
+    elif computer_choice == "rock" and user_choice.lower() == "paper":
+        return player_wins
+    elif computer_choice == "rock" and user_choice.lower() == "scissors":
+        return computer_wins
+    elif computer_choice == "paper" and user_choice.lower() == "rock":
+        return computer_wins
+    elif computer_choice == "paper" and user_choice.lower() == "paper":
+        return tie
+    elif computer_choice == "paper" and user_choice.lower() == "scissors":
+        return player_wins
+    elif computer_choice == "scissors" and user_choice.lower() == "rock":
+        return player_wins
+    elif computer_choice == "scissors" and user_choice.lower() == "paper":
+        return computer_wins
+    elif computer_choice == "scissors" and user_choice.lower() == "scissors":
+        return tie
+    elif computer_choice == "rock" and user_choice.lower() == "nothing":
+        return tie
+    elif computer_choice == "paper" and user_choice.lower() == "nothing":
+        return tie
+    elif computer_choice == "scissors" and user_choice.lower() == "nothing":
+        return tie
+```
+The `get_winner` function abstracts the logic for the winner and returns the correct statement for the winner, loser or if the game is a tie. It takes two arguments, namely, `computer_choice` and `user_choice`. Then, it decides either the player or the computer won or if the game is a tie.
+
+### Function 4
+```python
+def print_final_results(computer_wins, user_wins):
+    final_score = f"computer has won {computer_wins} rounds.\nplayer has won {user_wins} rounds."
+    print("THE GAME IS OVER!")
+    if computer_wins == 3:
+        print(final_score)
+        print("Computer has won the game.")
+
+    elif user_wins == 3:
+        print(final_score)
+        print("Player has won the game. CONGRATULATIONS!!!")
+```
+The `print_final_results` function print the final results of the game. It takes `computer_wins` and `user_wins`, decides who won the game and prints the correct win results. Whoever wins 3 rounds of the game wins the game.
+
+### Function 5
+```python
+def play():
+    # load the model
+    model = load_model("keras_model.h5")
+
+    # start the webcam
+    cap = cv2.VideoCapture(0)
+
+    # setup initial wins for computer and user
+    computer_wins = 0
+    user_wins = 0
+
+    # set start time
+    start_time = time.time()
+
+    while True:
+        # read the frame
+        ret, frame = cap.read()
+        # show the frame in a window
+        cv2.imshow('frame', frame)
+
+        # set the end time
+        end_time = time.time()
+        # calculate how many seconds have passed
+        elapsed_time = end_time - start_time
+
+        # if 3 seconds have passed 
+        if elapsed_time > 3:
+            # reset the start time
+            start_time = end_time
+
+            # prepare the image
+            data = np.ndarray(shape=(1,224,224,3), dtype=np.float32)
+            resized_frame = cv2.resize(frame, (224,224), interpolation=cv2.INTER_AREA)
+            image_np = np.array(resized_frame)
+            normalized_image = (image_np.astype(np.float32) / 127.0) - 1 
+            data[0] = normalized_image
+
+            # get user choice as prediction from model
+            prediction = get_prediction(data, model)
+            print(f"you chose {prediction}.")
+
+            # get computer choice
+            computer_choice = get_computer_choice()
+            print(f"computer chose {computer_choice}.")
+
+            # print the winner
+            winner = get_winner(computer_choice, prediction)
+            print(winner)
+            print('\n')
+
+            # track computer and user wins
+            if winner.lower() == "you lost":
+                computer_wins += 1
+            elif winner.lower() == "you won!":
+                user_wins += 1
+
+            # if either user or computer has won 3 times, the game is over!
+            if computer_wins == 3 or user_wins == 3:
+                print_final_results(computer_wins, user_wins)
+                break
+
+        # if key q is pressed quit
+        if cv2.waitKey(1) & 0xFF == ord('q'):
+            break
+
+    cap.release()
+    cv2.destroyAllWindows()
+```
+The `play` function simulates the game. It runs a couple of important tasks. 
+* It loads the model and camera.
+* It keeps track of the player and computer wins.
+* It keeps track of the timer. Each round is 3 seconds.
+* It decides if the game has ended.
+* It takes care of closing the camera.
