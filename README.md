@@ -5,7 +5,12 @@ This project is a rock, paper and scissors game using computer vision. The playe
 
 ## Table of Contents
 1. [Getting started](#getting-started)
+    - [Cloning the project](#cloning-the-project)
+    - [Environment setup](#environment-setup)
+    - [Requirements](#requirements)
 2. [Running the game](#running-the-game)
+    - [Running text version](#running-text-version)
+    - [Running computer vision version](#running-computer-vision-version)
 4. [Milestone 2](#milestone-2)
 5. [Milestone 4](#milestone-4)
 6. [Milestone 5](#milestone-5)
