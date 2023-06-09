@@ -58,12 +58,20 @@ python manual_rps.py
 
 The game starts in the terminal. The player can press either `Ctrl + c` or `q` to exit the game. The game can be played by entering either `rock, paper or scissors`.
 
-![game start](./images/text-version-welcome.png)
-Game start
-![in game](./images/text-version-game.png)
-Game play
-![game exit](./images/text-version-exit.png)
-Game exit
+<figure>
+    <img src="./images/text-version-welcome.png" alt="game start"/>
+    <figcaption>Game start</figcaption>
+</figure>
+
+<figure>
+    <img src="./images/text-version-game.png" alt="in game"/>
+    <figcaption>Game play</figcaption>
+</figure>
+
+<figure>
+    <img src="./images/text-version-exit.png" alt="game exit"/>
+    <figcaption>Game exit</figcaption>
+</figure>
 
 ### Running computer vision version
 To run the computer vision version of the game, run the following command:
