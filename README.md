@@ -23,6 +23,7 @@ This project is a rock, paper and scissors game using computer vision. The playe
     - [Function 3 for Milestone 5](#function-3-for-milestone-5)
     - [Function 4 for Milestone 5](#function-4-for-milestone-5)
     - [Function 5 for Milestone 5](#function-5-for-milestone-5)
+7. [Opportunities](#opportunities)
 
 ## Getting started
 ### Cloning the project
@@ -116,7 +117,7 @@ The trained model was downloaded on a tensorflow keras format and was named `ker
 The environment for the project is setup using conda command `conda create --name my_env python`. This created an environment named `my_env` with default `python` and `pip` installed. Then, three more packages; `opencv-python`, `tensorflow` and `ipykernel` were installed using the pip command, `pip install opencv-python tensorflow ipykernel`. All the dependencies of the project are redirected to the file, `requirements.txt` using the command, `pip list > requirements.txt`. This makes it easier for any other user who wants to re-create the project install the exact dependencies. 
 
 The code for this milestone uses the `random` module and can be found in the file `manual_rps.py`. The code is divided into four functions:
-### Function 1 for Milestonee 4
+### Function 1 for Milestone 4
 ```python
 def get_computer_choice():
     choices = ["rock", "paper", "scissors"]
@@ -356,3 +357,13 @@ The `play` function simulates the game. It runs a couple of important tasks.
 * It keeps track of the timer. Each round is 3 seconds.
 * It decides if the game has ended.
 * It takes care of closing the camera.
+
+## Opportunities
+Some of the opportunities for the program are:
+* Text version of the game could have a better interface.
+* Scores could be tracked in the text version.
+* Computer vision version can implement a better interface with timer appearing on the webcam window.
+* Computer vision version can be better encapsulated and abstracted with use of classes.
+* Better accurate model could be trained as current model is not perfect.
+
+Thank you for taking interest in the project. Hope you like it.
