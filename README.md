@@ -13,16 +13,16 @@ This project is a rock, paper and scissors game using computer vision. The playe
     - [Running computer vision version](#running-computer-vision-version)
 4. [Milestone 2](#milestone-2)
 5. [Milestone 4](#milestone-4)
-    - [Function 1](#function-1)
-    - [Function 2](#function-2)
-    - [Function 3](#function-3)
-    - [Function 4](#function-4)
+    - [Function 1 for Milestone 4](#function-1-for-milestone-4)
+    - [Function 2 for Milestone 4](#function-2-for-milestone-4)
+    - [Function 3 for Milestone 4](#function-3-for-milestone-4)
+    - [Function 4 for Milestone 4](#function-4-for-milestone-4)
 6. [Milestone 5](#milestone-5)
-    - [Function 1](#function-1)
-    - [Function 2](#function-2)
-    - [Function 3](#function-3)
-    - [Function 4](#function-4)
-    - [Function 5](#function-5)
+    - [Function 1 for Milestone 5](#function-1-for-milestone-5)
+    - [Function 2 for Milestone 5](#function-2-for-milestone-5)
+    - [Function 3 for Milestone 5](#function-3-for-milestone-5)
+    - [Function 4 for Milestone 5](#function-4-for-milestone-5)
+    - [Function 5 for Milestone 5](#function-5-for-milestone-5)
 
 ## Getting started
 ### Cloning the project
@@ -116,7 +116,7 @@ The trained model was downloaded on a tensorflow keras format and was named `ker
 The environment for the project is setup using conda command `conda create --name my_env python`. This created an environment named `my_env` with default `python` and `pip` installed. Then, three more packages; `opencv-python`, `tensorflow` and `ipykernel` were installed using the pip command, `pip install opencv-python tensorflow ipykernel`. All the dependencies of the project are redirected to the file, `requirements.txt` using the command, `pip list > requirements.txt`. This makes it easier for any other user who wants to re-create the project install the exact dependencies. 
 
 The code for this milestone uses the `random` module and can be found in the file `manual_rps.py`. The code is divided into four functions:
-### Function 1
+### Function 1 for Milestonee 4
 ```python
 def get_computer_choice():
     choices = ["rock", "paper", "scissors"]
@@ -124,7 +124,7 @@ def get_computer_choice():
 ```
 The `get_computer_choice` function simulates a choice from the computer. It chooses a random choice from a list of choices, `rock, paper or scissors` and returns it.
 
-### Function 2
+### Function 2 for Milestone 4
 ```python
 def get_user_choice():
     valid_choices = ["rock", "paper", "scissors", "q"]
@@ -136,7 +136,7 @@ def get_user_choice():
 ```
 The `get_user_choice` function simulates a choice from the user. It asks the user to input a choice from choices, `rock, paper , scissors or q` and return it. Furthermore, the function validates the user's choice and raises `ValueError` if the choice is not valid.
 
-### Function 3
+### Function 3 for Milestone 4
 ```python
 def get_winner(computer_choice, user_choice):
     computer_wins = "You lost"
@@ -163,7 +163,7 @@ def get_winner(computer_choice, user_choice):
 ```
 The `get_winner` function abstracts the logic for the winner and prints the statement for the winner, loser or if the game is a tie. It takes two arguments, namely, `computer_choice` and `user_choice`. Then, it decides either the player or the computer won or if the game is a tie.
 
-### Function 4
+### Function 4 for Milestone 4
 ```python
 def play():
     game_finish_str = "Thank you for playing rock, paper and scissors game.\nPlease visit again."
@@ -205,7 +205,7 @@ For Milesone 5, computer vision version of the game is developed. The code for t
 * random
 
 The code for the milestone is divided into five functions. 
-### Function 1
+### Function 1 for Milestone 5
 ```python
 def get_prediction(image, model):
     prediction = model.predict(image)
@@ -224,7 +224,7 @@ def get_prediction(image, model):
 ```
 The `get_prediction` function predicts the class of the image into either `rock, paper, scissors or nothing` using the model provided.
 
-### Function 2
+### Function 2 for Milestone 5
 ```python
 def get_computer_choice():
     choices = ["rock", "paper", "scissors"]
@@ -232,7 +232,7 @@ def get_computer_choice():
 ```
 The `get_computer_choice` function simulates a choice from the computer. It chooses a random choice from a list of choices, `rock, paper or scissors` and returns it.
 
-### Function 3
+### Function 3 for Milestone 5
 ```python
 def get_winner(computer_choice, user_choice):
     computer_wins = "You lost"
@@ -265,7 +265,7 @@ def get_winner(computer_choice, user_choice):
 ```
 The `get_winner` function abstracts the logic for the winner and returns the correct statement for the winner, loser or if the game is a tie. It takes two arguments, namely, `computer_choice` and `user_choice`. Then, it decides either the player or the computer won or if the game is a tie.
 
-### Function 4
+### Function 4 for Milestone 5
 ```python
 def print_final_results(computer_wins, user_wins):
     final_score = f"computer has won {computer_wins} rounds.\nplayer has won {user_wins} rounds."
@@ -280,7 +280,7 @@ def print_final_results(computer_wins, user_wins):
 ```
 The `print_final_results` function print the final results of the game. It takes `computer_wins` and `user_wins`, decides who won the game and prints the correct win results. Whoever wins 3 rounds of the game wins the game.
 
-### Function 5
+### Function 5 for Milestone 5
 ```python
 def play():
     # load the model
