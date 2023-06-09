@@ -46,29 +46,46 @@ def get_winner(computer_choice, user_choice):
     player_wins = "You won!"
     tie = "It is a tie!"
     if computer_choice == "rock" and user_choice.lower() == "rock":
-        print(tie)
+        return tie
     elif computer_choice == "rock" and user_choice.lower() == "paper":
-        print(player_wins)
+        return player_wins
     elif computer_choice == "rock" and user_choice.lower() == "scissors":
-        print(computer_wins)
+        return computer_wins
     elif computer_choice == "paper" and user_choice.lower() == "rock":
-        print(computer_wins)
+        return computer_wins
     elif computer_choice == "paper" and user_choice.lower() == "paper":
-        print(tie)
+        return tie
     elif computer_choice == "paper" and user_choice.lower() == "scissors":
-        print(player_wins)
+        return player_wins
     elif computer_choice == "scissors" and user_choice.lower() == "rock":
-        print(player_wins)
+        return player_wins
     elif computer_choice == "scissors" and user_choice.lower() == "paper":
-        print(computer_wins)
+        return computer_wins
     elif computer_choice == "scissors" and user_choice.lower() == "scissors":
-        print(tie)
+        return tie
     elif computer_choice == "rock" and user_choice.lower() == "nothing":
-        print(tie)
+        return tie
     elif computer_choice == "paper" and user_choice.lower() == "nothing":
-        print(tie)
+        return tie
     elif computer_choice == "scissors" and user_choice.lower() == "nothing":
-        print(tie)
+        return tie
+    
+def print_final_results(computer_wins, user_wins):
+    """
+    This function prints the result of the game.
+    Args:
+        computer_wins (int): The number of times computer has won
+        user_wins (int): The number of times user has won
+    """
+    final_score = f"computer has won {computer_wins} rounds.\nplayer has won {user_wins} rounds."
+    print("THE GAME IS OVER!")
+    if computer_wins == 3:
+        print(final_score)
+        print("Computer has won the game.")
+
+    elif user_wins == 3:
+        print(final_score)
+        print("Player has won the game. CONGRATULATIONS!!!")
 
 def play():
     """
@@ -79,6 +96,10 @@ def play():
 
     # start the webcam
     cap = cv2.VideoCapture(0)
+
+    # setup initial wins for computer and user
+    computer_wins = 0
+    user_wins = 0
 
     # set start time
     start_time = time.time()
@@ -114,12 +135,21 @@ def play():
             computer_choice = get_computer_choice()
             print(f"computer chose {computer_choice}.")
 
-            # prints the winner
-            get_winner(computer_choice, prediction)
+            # print the winner
+            winner = get_winner(computer_choice, prediction)
+            print(winner)
             print('\n')
 
-            # sleep for a second to check the result
-            time.sleep(1)
+            # track computer and user wins
+            if winner.lower() == "you lost":
+                computer_wins += 1
+            elif winner.lower() == "you won!":
+                user_wins += 1
+
+            # if either user or computer has won 3 times, the game is over!
+            if computer_wins == 3 or user_wins == 3:
+                print_final_results(computer_wins, user_wins)
+                break
 
         # if key q is pressed quit
         if cv2.waitKey(1) & 0xFF == ord('q'):
